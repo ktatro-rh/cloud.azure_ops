@@ -17,7 +17,7 @@
 
         probes:
           - name: "{{ health_probe_name }}"
-            protocol: Https
+            protocol: https
             host: "127.0.0.1"
             path: "/"
             interval: 30
@@ -27,7 +27,7 @@
         backend_http_settings_collection:
           - name: "backend-settings-1"
             port: 80
-            protocol: Http
+            protocol: http
             cookie_based_affinity: Disabled
             probe: "{{ health_probe_name }}"
 
