@@ -23,8 +23,6 @@
         gateway_ip_configurations:
           - subnet:
               id: "{{ gw_subnet_id }}"
-        frontend_ip_configurations:
-          - subnet:
-              id: "{{ fe_subnet_id }}"
+            name: appGatewayIpConfig
         backend_address_pools:
           - name: "my-new-backend-pool"
