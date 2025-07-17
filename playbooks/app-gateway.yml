@@ -7,12 +7,15 @@
      appgw_name: "my-app-gateway"
      backend_pool_name: "my-pool-1"
      health_probe_name: "my-probe-aap"
-     subnet_id:
   tasks:
       
     - name: Update Azure Application Gateway with new backend pool, health probe, backend setting, and path rule
       azure_rm_appgateway:
         resource_group: "{{ resource_group }}"
         name: "{{ appgw_name }}"
-       
+        gateway_ip_configurations:
+          - subnet:
+              name: default
+              virtual_network_name: my-virt-network
+            name: app_gateway_ip_config
         state: present
