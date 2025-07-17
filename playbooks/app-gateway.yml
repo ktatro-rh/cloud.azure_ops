@@ -15,11 +15,6 @@
         resource_group: "{{ resource_group }}"
         name: "{{ appgw_name }}"
 
-        backend_address_pools:
-          - name: "{{ backend_pool_name }}"
-            backend_addresses:
-              - fqdn: "{{ backend_fqdn }}"
-
         probes:
           - name: "{{ health_probe_name }}"
             protocol: Https
