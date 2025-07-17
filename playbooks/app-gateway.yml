@@ -9,7 +9,7 @@
      health_probe_name: "my-probe-aap"
   tasks:
       
-    - name: Update Azure Application Gateway with new backend pool, health probe, backend setting, and path rule
+    - name: stop gateway
       azure_rm_appgateway:
         resource_group: "{{ resource_group }}"
         name: "{{ appgw_name }}"
