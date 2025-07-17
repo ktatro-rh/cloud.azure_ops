@@ -14,3 +14,16 @@
         resource_group: "{{ resource_group }}"
         name: "{{ appgw_name }}"
         gateway_state: stopped
+
+    - name: Update Azure Application Gateway with new backend pool, health probe, backend setting, and path rule
+      azure_rm_appgateway:
+        resource_group: "{{ resource_group }}"
+        name: "{{ appgw_name }}"
+        probes:
+        - name: "http-probe1"
+          interval: 30
+          path: "/abc"
+          protocol: "http"
+          pick_host_name_from_backend_http_settings: true
+          timeout: 30
+          unhealthy_threshold: 20        
