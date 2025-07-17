@@ -4,7 +4,7 @@
   gather_facts: false
   vars:
      resource_group: "openenv-5x9h7"
-     appgw_name: "my-app-gateway"
+     appgw_name: "my-app-gateway-2"
      backend_pool_name: "my-pool-1"
      health_probe_name: "my-probe-aap"
   tasks:
