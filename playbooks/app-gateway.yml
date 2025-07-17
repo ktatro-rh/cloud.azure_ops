@@ -28,7 +28,7 @@
           - name: "backend-settings-1"
             port: 80
             protocol: http
-            cookie_based_affinity: Disabled
+            cookie_based_affinity: disabled
             probe: "{{ health_probe_name }}"
 
         state: present
