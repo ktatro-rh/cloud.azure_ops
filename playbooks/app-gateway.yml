@@ -14,7 +14,6 @@
       azure_rm_appgateway:
         resource_group: "{{ resource_group }}"
         name: "{{ appgw_name }}"
-
         probes:
           - name: "{{ health_probe_name }}"
             protocol: https
@@ -23,12 +22,10 @@
             interval: 30
             timeout: 30
             unhealthy_threshold: 30
-
         backend_http_settings_collection:
           - name: "backend-settings-1"
             port: 80
             protocol: http
             cookie_based_affinity: disabled
             probe: "{{ health_probe_name }}"
-
         state: present
