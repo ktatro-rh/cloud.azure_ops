@@ -11,11 +11,10 @@
  
     - name: Edit instance of Application Gateway
       register: app_gateway_output
-      state: present
       azure_rm_appgateway:
         resource_group: "{{ resource_group }}"
         name: "{{ appgw_name }}"
-               
+        state: present
         backend_address_pools:
           - backend_addresses:
               - ip_address: 10.0.0.4
