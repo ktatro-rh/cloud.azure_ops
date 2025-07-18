@@ -28,8 +28,8 @@
         resource_group: "{{ resource_group }}"
         name: "{{ appgw_name }}"
         sku:
-          name: standard_small
-          tier: standard
+          name: Standard_v2
+          tier: Standard_v2
           capacity: 2
         gateway_ip_configurations:
           - subnet:
@@ -47,6 +47,7 @@
         backend_address_pools:
           - backend_addresses:
               - ip_address: 10.0.0.4
+                fqdn:
             name: test_backend_address_pool
         backend_http_settings_collection:
           - port: 80
