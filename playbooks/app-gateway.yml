@@ -16,13 +16,27 @@
         name: "{{ appgw_name }}"
         gateway_state: stopped
 
-    - name: Update Azure Application Gateway with new backend pool, health probe, backend setting, and path rule
+    - name: Gather facts about the existing Application Gateway
+      azure.azcollection.azure_rm_applicationgateway_info:
+        resource_group: "{{ resource_group }}"
+        name: "{{ appgw_name }}"
+      register: existing_gateway_facts
+
+    - name: Display existing gateway
+      debug:
+        var: existing_gateway_facts
+
+    - name: Update Azure Application Gateway with new tags
       azure_rm_appgateway:
         resource_group: "{{ resource_group }}"
         name: "{{ appgw_name }}"
-        gateway_ip_configurations:
-          - subnet:
-              id: "{{ gw_subnet_id }}"
-            name: appGatewayIpConfig
-        backend_address_pools:
-          - name: "my-new-backend-pool"
+        state: present
+        tags:
+          Environment: Production
+          ManagedBy: Ansible
+          LastModified: "{{ ansible_date_time.iso8601 }}"
+      register: app_gateway_output
+      
+    - name: Display new gateway
+      debug:
+        var: app_gateway_output
