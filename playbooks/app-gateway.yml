@@ -28,6 +28,19 @@
       debug:
         var: existing_gateway_facts
 
+    - name: Get info of gateway
+      azure_rm_resource_info:
+        api_version: '2017-10-01'
+        resource_group: "{{ resource_group }}"
+        provider: Microsoft.Network
+        resource_type: applicationGateways
+        resource_name: "{{ appgw_name }}"
+      register: existing_gateway_info
+
+    - name: Display existing gateway
+      debug:
+        var: existing_gateway_info
+
     - name: 2. Define the new backend pool to be added
       set_fact:
         new_backend_pool:
