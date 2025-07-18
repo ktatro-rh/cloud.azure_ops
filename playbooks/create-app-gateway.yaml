@@ -1,7 +1,7 @@
 ---
 - name: Validate successful deployment of application
   hosts: localhost
-  gather_facts: false
+  gather_facts: true
   vars:
      resource_group: "openenv-5x9h7"
      appgw_name: "my-app-gateway-aap"
@@ -16,6 +16,7 @@
         address_prefix_cidr: "10.3.0.0/24"
    
     - name: Create instance of Application Gateway
+      register: app_gateway_output
       azure_rm_appgateway:
         resource_group: "{{ resource_group }}"
         name: "{{ appgw_name }}"
@@ -48,4 +49,10 @@
               drain_timeout_in_sec: 60
               enabled: true
             name: sample_appgateway_http_settings
+
+    - name: Display new gateway
+      debug:
+        var: app_gateway_output
+
+    
     
