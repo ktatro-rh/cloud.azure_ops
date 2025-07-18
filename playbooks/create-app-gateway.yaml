@@ -67,7 +67,6 @@
             backend_http_settings: sample_appgateway_http_settings
             http_listener: sample_http_listener
             name: rule1
-            priority: 100
 
     - name: Display new gateway
       debug:
