@@ -59,6 +59,6 @@
       debug:
         var: app_gateway_output
 
-    - name: Display new gateway
+    - name: Display new combined_pools
       debug:
-        var: app_gateway_output.state.backend_address_pools
+        var: combined_pools
