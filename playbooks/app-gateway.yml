@@ -32,7 +32,7 @@
       azure_rm_resource_info:
         api_version: '2017-10-01'
         resource_group: "{{ resource_group }}"
-        provider: Microsoft.Network
+        provider: Network
         resource_type: applicationGateways
         resource_name: "{{ appgw_name }}"
       register: existing_gateway_info
