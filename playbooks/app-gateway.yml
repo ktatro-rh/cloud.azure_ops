@@ -34,7 +34,6 @@
         tags:
           Environment: Production
           ManagedBy: Ansible
-          LastModified: "{{ ansible_date_time.iso8601 }}"
       register: app_gateway_output
       
     - name: Display new gateway
