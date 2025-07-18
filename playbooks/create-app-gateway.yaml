@@ -28,7 +28,7 @@
         resource_group: "{{ resource_group }}"
         name: "{{ appgw_name }}"
         sku:
-          name: Standard_v2
+          name: standard_small
           tier: Standard_v2
           capacity: 2
         gateway_ip_configurations:
