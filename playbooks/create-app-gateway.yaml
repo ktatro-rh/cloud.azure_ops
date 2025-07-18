@@ -29,7 +29,7 @@
         name: "{{ appgw_name }}"
         sku:
           name: standard_small
-          tier: Standard_v2
+          tier: standard_v2
           capacity: 2
         gateway_ip_configurations:
           - subnet:
