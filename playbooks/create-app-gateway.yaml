@@ -20,6 +20,7 @@
         resource_group: "{{ resource_group }}"
         name: my_public_ip_aap
         allocation_method: static
+        sku: standard
     
     - name: Create a subnet
       azure_rm_subnet:
