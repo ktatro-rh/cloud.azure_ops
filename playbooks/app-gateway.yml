@@ -30,7 +30,7 @@
       set_fact:
         new_backend_pool:
           - name: ansible-managed-pool-1   # Name of the new backend pool
-            ip_addresses:          # You can use ip_addresses or fqdns
+            backend_addresses:          # You can use ip_addresses or fqdns
               - 10.9.0.101
               - 10.9.0.102
     
