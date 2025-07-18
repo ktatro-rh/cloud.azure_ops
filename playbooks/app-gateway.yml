@@ -26,14 +26,26 @@
       debug:
         var: existing_gateway_facts
 
-    - name: Update Azure Application Gateway with new tags
+    - name: 2. Define the new backend pool to be added
+      set_fact:
+        new_backend_pool:
+          - name: ansible-managed-pool-1   # Name of the new backend pool
+            ip_addresses:          # You can use ip_addresses or fqdns
+              - 10.9.0.101
+              - 10.9.0.102
+    
+    - name: 3. Combine existing pools with the new pool
+      set_fact:
+        # This creates a final list containing all old pools and the new one.
+        # The 'default([])' filter handles cases where no pools exist yet.
+        combined_pools: "{{ existing_gateway_facts.application_gateways[0].backend_address_pools | default([]) + new_backend_pool }}"
+
+    - name: Update Azure Application Gateway with backend pool
       azure_rm_appgateway:
         resource_group: "{{ resource_group }}"
         name: "{{ appgw_name }}"
         state: present
-        tags:
-          Environment: Production
-          ManagedBy: Ansible
+        backend_address_pools: "{{ combined_pools }}"
       register: app_gateway_output
       
     - name: Display new gateway
