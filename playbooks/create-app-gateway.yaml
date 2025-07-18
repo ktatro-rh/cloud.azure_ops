@@ -43,9 +43,7 @@
               name: aap-mgt-subnet
             name: app_gateway_ip_config
         frontend_ip_configurations:
-          - subnet:
-              virtual_network_name: aap-mgt-virt-network
-              name: aap-mgt-subnet
+          - public_ip_address: my_public_ip_aap
             name: sample_gateway_frontend_ip_config
         frontend_ports:
           - port: 90
