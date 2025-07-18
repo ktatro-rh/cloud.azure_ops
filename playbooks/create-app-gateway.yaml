@@ -57,6 +57,12 @@
               drain_timeout_in_sec: 60
               enabled: true
             name: sample_appgateway_http_settings
+        http_listeners:
+          - frontend_ip_configuration: sample_gateway_frontend_ip_config
+            frontend_port: ag_frontend_port
+            name: sample_http_listener 
+
+    -
 
     - name: Display new gateway
       debug:
