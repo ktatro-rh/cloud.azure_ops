@@ -51,3 +51,7 @@
     - name: Display new gateway
       debug:
         var: app_gateway_output
+
+    - name: Display new gateway
+      debug:
+        var: app_gateway_output.state.backend_address_pools
