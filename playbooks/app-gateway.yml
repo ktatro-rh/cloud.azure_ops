@@ -53,7 +53,7 @@
       set_fact:
         # This creates a final list containing all old pools and the new one.
         # The 'default([])' filter handles cases where no pools exist yet.
-        combined_pools: "{{ existing_gateway_facts.application_gateways[0].backend_address_pools | default([]) + new_backend_pool }}"
+        combined_pools: "{{ existing_gateway_info.response[0].properties.backend_address_pools | default([]) + new_backend_pool }}"
       
     - name: Display new gateway
       debug:
