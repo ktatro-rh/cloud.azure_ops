@@ -54,6 +54,15 @@
         # This creates a final list containing all old pools and the new one.
         # The 'default([])' filter handles cases where no pools exist yet.
         combined_pools: "{{ existing_gateway_info.response[0].properties.backendAddressPools | default([]) + new_backend_pool }}"
+
+    - name: Update Gateway
+      azure_rm_appgateway:
+        resource_group: "{{ resource_group }}"
+        name: "{{ appgw_name }}"
+        state: present
+        backend_address_pools: "{{ combined_pools }}"
+        
+      register: app_gateway_output
       
     - name: Display new gateway
       debug:
