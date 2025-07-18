@@ -17,7 +17,7 @@
         gateway_state: stopped
 
     - name: Gather facts about the existing Application Gateway
-      azure.azcollection.azure_rm_applicationgateway_info:
+      azure.azcollection.azure_rm_appgateway_info:
         resource_group: "{{ resource_group }}"
         name: "{{ appgw_name }}"
       register: existing_gateway_facts
